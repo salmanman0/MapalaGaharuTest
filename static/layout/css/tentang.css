@@ -1,0 +1,39 @@
+.banner-header {
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-tentang.jpg");
+
+}
+
+.banner-header h1 {
+  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.8rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(251, 121, 0, 0.7));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.banner-header p {
+  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(251, 121, 0, 0.7));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.text-main {
+  color: #000080;
+}
+
+@media (max-width: 596px) {
+  .ganda-font{
+    font-size: medium;
+  }
+  #anggota p{
+    font-size: small;
+  }
+}

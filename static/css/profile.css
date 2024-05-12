@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+body {
+       background-color: #545454;
+       font-family: "Poppins", sans-serif;
+       font-weight: 300;
+}
+
+.container {
+       display: flex; /* Mengaktifkan flexbox */
+       justify-content: center; /* Menempatkan elemen di tengah secara horizontal */
+       align-items: center; /* Menempatkan elemen di tengah secara vertikal */
+       height: 100vh; /* Menggunakan tinggi layar penuh */
+       width: 100%; /* Menggunakan lebar penuh */
+   }
+
+.flex-container {
+    display: flex; /* Mengaktifkan flexbox */
+    justify-content: flex-start; /* Menempatkan elemen di sebelah kiri */
+    align-items: flex-start; /* Menempatkan elemen di bagian atas */
+    padding: 20px; /* Tambahkan ruang di sekitar elemen */
+    height: 100vh; /* Gunakan tinggi layar penuh */
+    width: 100%; /* Gunakan lebar penuh */
+}
+
+.card {
+       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+       width: 50%;
+       border: none;
+       border-radius: 15px;
+       padding: 8px;
+       background-color: #fff;
+       position: relative;
+       height: 370px;
+}
+
+.upper {
+
+       height: 100px;
+       overflow: hidden;
+
+}
+
+.upper img {
+
+       width: 100%;
+       border-top-left-radius: 10px;
+       border-top-right-radius: 10px;
+
+}
+
+.user {
+       position: relative;
+}
+
+.profile img {
+
+       height: 80px;
+       width: 80px;
+       margin-top: 2px;
+
+
+}
+
+.profile {
+
+       position: absolute;
+       top: -50px;
+       left: 43%;
+       height: 90px;
+       width: 90px;
+       border: 3px solid #fff;
+       border-radius: 50%;
+
+}
+
+.follow {
+
+       border-radius: 15px;
+       padding-left: 20px;
+       padding-right: 20px;
+       height: 35px;
+}
+
+.stats span {
+
+       font-size: 29px;
+}

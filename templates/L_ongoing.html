@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Mapala Gaharu - Kegiatan</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/layout/assets/img/logo.png') }}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='/layout/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='/layout/css/ongoing.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href=" {{ url_for('static', filename='/layout/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='/layout/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg" id="mainNav" style="background-color: rgba(217, 119, 6, 1);">
+        <div class="container px-4 px-lg-5">
+            <a href="#page-top"><img src="{{ url_for('static', filename='/layout/assets/img/logo.png') }}" alt=""
+                    width="50" height="45" srcset=""></a>
+            <a class="navbar-brand" href="{{ url_for('home') }}">Mapala Gaharu</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanTentang') }}">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#ongoing">Ongoing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#berita">Berita</a></li>
+                    <li class="nav-item d-{{status.stats}}"><a class="nav-link" href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
+                    <li class="nav-item"><a class="nav-link" href=" {{ url_for('home') }}#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="content mt-5 text-black">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ ongoing.posterGambar }}" alt="" width="100%" height="auto">
+                </div>
+                <div class="col-8">
+                    <h1 id="judul-ongoing">{{ ongoing.judul }}</h1>
+                    <p style="font-size: smaller;">Kegiatan dilaksanakan pada tanggal {{ongoing_tanggal}}</p>
+                    <p class="multiline-text" id="isi">
+                        {{ ongoing.konten }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 px-5 mb-3">
+            <h2>Kegiatan Tahunan</h2>
+            {% for data in event%}
+            <div class="container">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-5" 
+                    style = "
+                        width: 20%;
+                        height: 40%;
+                        min-height: 5rem;
+                        padding: 8rem 0;
+                        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url('{{data.gambar}}');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-attachment: scroll;
+                        background-size: cover;
+                    ">
+                    </div>
+                    <div class="col-7">
+                        <h2 id="judul_kegiatan_tahunan">{{data.judul}}</h2>
+                        <p style="font-size: smaller;">Kegiatan dilaksanakan setiap tanggal {{data.tanggal}}</p>
+                        <p class="multiline-text" id="deskripsi_kegiatan_tahunan">{{data.konten}}.</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+
+    </section>
+</body>
+
+</html>

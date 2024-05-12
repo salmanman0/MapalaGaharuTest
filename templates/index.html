@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Mapala Gaharu - Dashboard</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/img/Logo.png') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#flexSwitchCheckDefault').change(function () {
+                var isChecked = $(this).prop('checked');
+                if (isChecked) {
+                    let hasil = "flex"
+                    $.ajax({
+                        type: "POST",
+                        url: "/status",
+                        data: {
+                            stats_give: hasil,
+                        },
+                        success: function (response) {
+                            toastr.info('Pendaftaran Berhasil Dibuka');
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert("Terjadi kesalahan saat membuka pendaftaran");
+                        }
+                    });
+                } else {
+                    let hasil = "none"
+                    $.ajax({
+                        type: "POST",
+                        url: "/status",
+                        data: {
+                            stats_give: hasil,
+                        },
+                        success: function (response) {
+                            toastr.info('Pendaftaran Berhasil Ditutup');
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert("Terjadi kesalahan saat membuka pendaftaran");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body class="sb-nav-fixed">
+
+    <!-- Struktur toast untuk menampilkan notifikasi -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast" id="admin-toast" data-delay="5000">
+            <div class="toast-header">
+                <strong class="me-auto">Notifikasi</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toast-message"></div>
+        </div>
+    </div>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 ms-2 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="{{ url_for('sign_out') }}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="nav-link" href="{{ url_for('dashboard') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">CRUD</div>
+                        <a class="nav-link" href="{{ url_for('admin') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-person"></i></div>
+                            Admin
+                        </a>
+
+                        <a class="nav-link" href="{{ url_for('berita') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Berita
+                        </a>
+                        <a class="nav-link" href="{{ url_for('ongoing') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
+                            OnGoing
+                        </a>
+                        <a class="nav-link" href="{{ url_for('event') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-calendar2-event-fill"></i></div>
+                            Event Tahunan
+                        </a>
+                        <a class="nav-link" href="{{ url_for('pendaftar') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-bookmark"></i></div>
+                            Pendaftar
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    {{user.namaLengkap}}
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <div class="alert alert-success m-4" role="alert">
+                <h4 class="alert-heading">Selamat Datang</h4>
+                <p>Hallo, kembali lagi di Mapala Gaharu - Anda telah login sebagai {{user.namaLengkap}}</p>
+                <hr>
+                <p class="mb-0">Selamat Menjelajah!!!</p>
+            </div>
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="row row-cols-2">
+                        <h1 class="col">Dashboard</h1>
+                        <div class="col form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                {{status}}>
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Aktifkan Pendaftaran</label>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">Jumlah Anggota</div>
+                                <h4 class="card-body text-center">{{ anggota }}</h4>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body">Jumlah Admin</div>
+                                <h4 class="card-body text-center">{{ admin }}</h4>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-dark text-white mb-4">
+                                <div class="card-body">Jumlah Alumni</div>
+                                <h4 class="card-body text-center">{{ alumni }}</h4>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-danger text-white mb-4">
+                                <div class="card-body">Ketua Umum Saat Ini</div>
+                                <h4 class="card-body text-center">{{ ketua.namaLengkap }}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fa-solid fa-list-ul"></i>
+                            Daftar anggota
+                            <button class="btn btn-primary btn-sm" style="float: right;" data-toggle="modal"
+                                data-target="#tambah" type="button"><i class="fa-solid fa-plus mr-2"></i>Tambah
+                                anggota</button>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Anggota</th>
+                                        <th>ID Anggota</th>
+                                        <th>Status</th>
+                                        <th>Generasi</th>
+                                        <th>Tanggal Bergabung</th>
+                                        <th>Detail</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nama Anggota</th>
+                                        <th>ID Anggota</th>
+                                        <th>Status</th>
+                                        <th>Generasi</th>
+                                        <th>Tanggal Bergabung</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for data in data %}
+                                    <tr>
+                                        <td>{{ data['namaLengkap'] }}</td>
+                                        <td>{{ data['id_anggota'] }}</td>
+                                        <td>{{ data['status'] }}</td>
+                                        <td>{{ data['generasi'] }}</td>
+                                        <td>{{ data['tanggal'] }}</td>
+                                        <td>
+                                            <button class="btn btn-outline-primary" data-toggle="modal"
+                                                data-target="#modalDetail{{ data['_id'] }}"
+                                                type="button">Detail</button>
+
+                                            <!-- Modal -->
+                                            <a href="/anggota/update/{{ data['_id'] }}" class="btn btn-outline-warning"
+                                                data-toggle="modal" data-target="#modaledit{{ data['_id'] }}">Edit</a>
+
+                                            <!-- Tombol yang memicu modal -->
+                                            <a href="/anggota/delete/{{ data['_id'] }}"
+                                                class="btn btn-outline-danger btn-xs"
+                                                onclick="return confirm('Apakah anda yakin ingin menghapusnya?')">Hapus</a>
+
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Mapala Gaharu 2024</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal Tambah -->
+    <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url_for('create_anggota') }}" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="namaLengkap" class="col-form-label">Nama Lengkap
+                                :</label>
+                            <input type="text" class="form-control" required name="namaLengkap"
+                                placeholder="Masukkan Nama Lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_anggota" class="col-form-label">ID Anggota :</label>
+                            <input type="text" class="form-control" required name="id_anggota"
+                                placeholder="Masukkan ID Anggota">
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-form-label">Status :</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="" selected>Pilih Opsi</option>
+                                <option value="Alumni">Alumni</option>
+                                <option value="Ketua Umum">Ketua Umum</option>
+                                <option value="Sekretaris 1">Sekretaris 1</option>
+                                <option value="Sekretaris 2">Sekretaris 2</option>
+                                <option value="Bendahara">Bendahara</option>
+                                <option value="Koordinator Divisi Sarana Prasarana">Koordinator Divisi Sarana Prasarana</option>
+                                <option value="Divisi Sarana Prasarana">Divisi Sarana Prasarana</option>
+                                <option value="Koordinator Divisi Alam Bebas">Koordinator Divisi Alam Bebas</option>
+                                <option value="Divisi Alam Bebas">Divisi Alam Bebas</option>
+                                <option value="Koordinator Divisi HID">Koordinator Divisi HID</option>
+                                <option value="Divisi HID">Divisi HID</option>
+                                <option value="Koordinator Divisi Litbang">Koordinator Divisi Litbang</option>
+                                <option value="Divisi Litbang">Divisi Litbang</option>
+                                <option value="Anggota Muda">Anggota Muda</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="generasi" class="col-form-label">Generasi :</label>
+                            <input type="text" class="form-control" required placeholder="Masukkan Generasi"
+                                name="generasi">
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal" class="col-form-label">Tanggal Bergabung :</label>
+                            <input type="date" class="form-control" required placeholder="Masukkan Tanggal"
+                                name="tanggal">
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar" class="col-form-label">Gambar Anggota :</label>
+                            <input type="file" class="form-control" required name="gambar"
+                                placeholder="Tambahkan Gambar Anggota">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit -->
+    {% for data in data %}
+    <div class="modal fade" id="modaledit{{ data['_id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Anggota
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url_for('update_anggota') }}" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="namaLengkap" class="col-form-label">Nama Lengkap :</label>
+                            <input type="hidden" name="id" value="{{ data['_id'] }}">
+                            <input type="text" class="form-control" name="namaLengkap"
+                                value="{{ data['namaLengkap'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_anggota" class="col-form-label">ID Anggota :</label>
+                            <input type="text" class="form-control" name="id_anggota" value="{{ data['id_anggota'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-form-label">Status :</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="{{ data['status'] }}" selected>{{ data['status'] }}</option>
+                                <option value="Alumni">Alumni</option>
+                                <option value="Ketua Umum">Ketua Umum</option>
+                                <option value="Sekretaris 1">Sekretaris 1</option>
+                                <option value="Sekretaris 2">Sekretaris 2</option>
+                                <option value="Bendahara">Bendahara</option>
+                                <option value="Koordinator Divisi Sarana Prasarana">Koordinator Divisi Sarana Prasarana</option>
+                                <option value="Divisi Sarana Prasarana">Divisi Sarana Prasarana</option>
+                                <option value="Koordinator Divisi Alam Bebas">Koordinator Divisi Alam Bebas</option>
+                                <option value="Divisi Alam Bebas">Divisi Alam Bebas</option>
+                                <option value="Koordinator Divisi HID">Koordinator Divisi HID</option>
+                                <option value="Divisi HID">Divisi HID</option>
+                                <option value="Koordinator Divisi Litbang">Koordinator Divisi Litbang</option>
+                                <option value="Divisi Litbang">Divisi Litbang</option>
+                                <option value="Anggota Muda">Anggota Muda</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="generasi" class="col-form-label">Generasi
+                                :</label>
+                            <input type="text" class="form-control" name="generasi" value="{{ data['generasi'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal" class="col-form-label">Tanggal Bergabung :</label>
+                            <input type="date" class="form-control" name="tanggal" value="{{ data['tanggal'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar" class="col-form-label">Gambar Anggota :</label>
+                            <input type="file" class="form-control" name="gambar" placeholder="{{ data['gambar'] }}">
+                            <img src="{{ data.gambar }}" style="width:150px" class="img-thumbnail" alt="Gambar Anggota">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Modal Detail -->
+    {% for data in data %}
+    <div class="modal fade" id="modalDetail{{ data['_id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Anggota
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="namaLengkap" class="col-form-label">Nama Lengkap :</label>
+                            <input type="text" class="form-control" id="namaLengkap"
+                                placeholder="{{ data['namaLengkap'] }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_anggota" class="col-form-label">ID Anggota :</label>
+                            <input type="text" class="form-control" id="id_anggota"
+                                placeholder="{{ data['id_anggota'] }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-form-label">Status
+                                :</label>
+                            <input type="text" class="form-control" id="status" placeholder="{{ data['status'] }}"
+                                disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="generasi" class="col-form-label">Generasi
+                                :</label>
+                            <input type="text" class="form-control" id="generasi" placeholder="{{ data['generasi'] }}"
+                                disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal" class="col-form-label">Tangal Bergabung :</label>
+                            <input type="text" class="form-control" id="tanggal" placeholder="{{ data['tanggal'] }}"
+                                disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar" class="col-form-label">Gambar Anggota :</label>
+                            <input type="file" class="form-control" id="gambar" placeholder="{{ data['gambar'] }}"
+                                disabled>
+                            <img src="{{ data.gambar }}" style="width:150px" class="img-thumbnail" alt="Gambar Anggota">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script src="{{ url_for('static', filename='/js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='/js/datatables-simple-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+    </script>
+    <script>
+        $(document).ready(function () {
+            var url = window.location.href;
+            var urlObj = new URL(url);
+            var status = urlObj.searchParams.get('status');
+            if (status == "success") {
+                toastr.success('Berhasil. Luar biasa!');
+            } else if (status == "danger") {
+                toastr.danger('Gagal. Silahkan Coba lagi!');
+            }
+            urlObj.searchParams.delete('status');
+            var newUrl = urlObj.toString();
+            history.replaceState(null, '', newUrl);
+        });
+    </script>
+</body>
+
+</html>

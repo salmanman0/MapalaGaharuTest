@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Mapala Gaharu - Tentang</title>
+    <link rel="icon" type="image/x-icon" href=" {{ url_for('static', filename='/layout/assets/img/logo.png') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='/layout/css/styles.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href=" {{ url_for('static', filename='/layout/css/tentang.css') }}">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="width: 100vw !important;">
+        <div class="container px-4 px-lg-5" style="width: 100vw !important;">
+            <a href="#page-top"><img src=" {{ url_for('static', filename='/layout/assets/img/logo.png') }}" alt=""
+                    width="50" height="45" srcset="" data-aos="fade-down" data-aos-duration="750"></a>
+            <a class="navbar-brand" href="index.html" data-aos="fade-down" data-aos-duration="1250">Mapala Gaharu</a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" data-aos="fade-down-left" data-aos-duration="750"><a class="nav-link"
+                            href="{{ url_for('home') }}#beranda">Beranda</a></li>
+                    <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1000"><a class="nav-link"
+                            href="#">Tentang</a></li>
+                    <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1250"><a class="nav-link"
+                            href="{{ url_for('home') }}#ongoing">Ongoing</a></li>
+                    <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1500"><a class="nav-link"
+                            href="#berita">Berita</a></li>
+                    <li class="nav-item d-{{status.stats}}" data-aos="fade-down-left" data-aos-duration="1750"><a class="nav-link"
+                            href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
+                    <li class="nav-item" data-aos="fade-down-left" data-aos-duration="2000"><a class="nav-link"
+                            href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <section id="header">
+        <div class="banner-header p-5 mb-4">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold" data-aos="fade-right" data-aos-duration="750">Mapala Gaharu</h1>
+                <p class="col-md-8 fs-4" data-aos="fade-right" data-aos-duration="1250">Mensana in corpore sano. Since
+                    2001 in Politeknik Caltex Riau.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Content -->
+    <section id="content">
+        <div class="container">
+
+            <!-- Sejarah -->
+            <section class="sejarah">
+                <h1 class="text-main" style="font-weight: bold;" data-aos="fade-left" data-aos-duration="1000">Sejarah
+                    Mapala Gaharu</h1>
+                <hr class="text-main">
+                <p class="text-black" style="text-align: justify;" data-aos="fade-left" data-aos-duration="1250">Mapala
+                    Gaharu, didirikan pada tanggal 5 Desember 2004
+                    oleh 9 orang perintis dan diresmikan pada tanggal 12 Juni 2005 oleh Bapak Jati.
+                    Bapak Jati adalah direktur Politeknik Caltex Riau pada saat itu. Sembilan orang perintis ini
+                    merupakan mahasiswa Politeknik Caltex Riau.
+
+                    Nama Gaharu diangkat dari filosofi bahwa Gaharu adalah nama sebuah pohon yang semakin lama maka
+                    semakin harum dan dapat memberi manfaat. Artinya nama Gaharu diambil supaya dapat mengharumkan nama
+                    mapala baik di dalam maupun di luar.
+                </p>
+                <h5 class="text-main" style="font-weight: bold;" data-aos="fade-left" data-aos-duration="1000">Kegiatan
+                    Organisasi di Mapala Gaharu</h5>
+                <ol class="text-black" data-aos="fade-left" data-aos-duration="1500">
+                    <li>Keorganisasian, mengikuti organisasi artinya kita dituntut untuk tahu tata cara memanage sebuah
+                        organisasi tersebut dengan baik dan benar.</li>
+                    <li>Lingkungan Alam, Mengikuti kegiatan yang berhubungan dengan alam. Artinya kita tidak hanya
+                        dituntut di lingkungan saja, namun kita harus mengetahui alam yang ada dengan melakukan
+                        konservasi
+                        alam dengan sebaik mungkin.</li>
+                    <li>Lingkungan Sosial Masyarakat artinya kita sebagai anggota mapala tidak hanya aktif di alam
+                        saja, tetapi kita juga aktif kemasyarakat.</li>
+                </ol>
+            </section>
+
+
+            <!-- Visi Misi -->
+            <section class="visi-misi">
+                <div class="header-visi-misi">
+                    <h1 class="text-main" style="font-weight: bold;" data-aos="fade-right" data-aos-duration="1000">Visi
+                        Misi Mapala Gaharu</h1>
+                    <hr class="text-main">
+                    <p class="text-black" style="text-align: justify;" data-aos="fade-right" data-aos-duration="1500">
+                        Mapala Gaharu merupakan keorganisasian mahasiswa
+                        di
+                        Politeknik Caltex Riau yang telah berdiri sejak 2001. Mapala Gaharu merupakan organisasi yang
+                        bergerak aktif pada kegiatan reservasi alam serta menjaga keasrian alam dimanapun berada. Untuk
+                        memiliki arah dan tujuan yang jelas, Mapala Gaharu memiliki Visi dan Misi sebagai berikut.</p>
+                </div>
+                <div class="container row justify-content-start">
+                    <button class="btn btn-primary col-3" style="margin-right: 1em;" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#visi" aria-expanded="false" aria-controls="visi"
+                        data-aos="zoom-in-up" data-aos-duration="1500">
+                        Visi
+                    </button>
+                    <button class="btn btn-primary col-3" style="margin-right: 1em;" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#misi" aria-expanded="false" aria-controls="misi"
+                        data-aos="zoom-in-up" data-aos-duration="1500">
+                        Misi
+                    </button>
+                    <div class="mb-2 mt-2" style="height: auto;">
+                        <div class="collapse collapse-horizontal" id="visi">
+                            <div class="card card-body text-black" style="width: 90vw;">
+                                <h2 class="text-main">VISI</h2>
+                                <p>Menjadikan Anggota MAPALA GAHARU yang mampu dalam berorganisasi sosial dan alam
+                                    bebas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MISI -->
+                    <div class="mb-2 mt-2" style="height: auto;">
+                        <div class="collapse collapse-horizontal" id="misi">
+                            <div class="card card-body text-black" style="width: 90vw;">
+                                <h2 class="text-main">MISI</h2>
+                                <ul class="text-black">
+                                    <li>Meningkatkan dan mengembangkan sumber daya anggota MAPALA GAHARU. </li>
+                                    <li>Tanggap terhadap kelestarian alam lingkungan, dan sosial.</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Kepengurusan -->
+            <section class="kepengurusan">
+                <div class="header-kepengurusan">
+                    <h1 class="text-main" style="font-weight: bold;" data-aos="zoom-in-right" data-aos-duration="1000">
+                        Kepengurusan Aktif Mapala Gaharu</h1>
+                    <hr class="text-main">
+                    <p class="text-black" style="text-align: justify;" data-aos="zoom-in-right"
+                        data-aos-duration="1000">Mapala Gaharu memiliki kepengurusan aktif yang
+                        berganti disetiap 1 tahun sekali. Kepengurusan ini bertanggung jawab atas segala semua kegiatan
+                        yang
+                        diadakan oleh organisasi Mapala Gaharu. Berikut adalah susunan kepengurusan Mapala Gaharu.</p>
+                </div>
+                <!-- Ketum -->
+                <div class="row justify-content-center">
+                    <button class="btn btn-primary col-5" style="margin-right: 1em;" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#ketum" aria-expanded="false" aria-controls="ketum"
+                        data-aos="zoom-out" data-aos-duration="1000">
+                        Ketua Umum
+                    </button>
+                    <div class="mb-2 mt-2" style="height: auto;">
+                        <div class="collapse collapse-horizontal" id="ketum">
+                            <div class="container text-black text-center">
+                                <img src="{{ketua.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block"
+                                    alt="..." style="width: 15%; height: auto">
+                                <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{ ketua.namaLengkap }}
+                                </h4>
+                                <p id="nomor_anggota">{{ ketua.id_anggota }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sekre -->
+                <div class="row justify-content-around">
+                    <a class="btn btn-primary col-5 text-center" data-bs-toggle="collapse" href="#sekre1" role="button"
+                        aria-expanded="false" aria-controls="sekre1" data-aos="zoom-out"
+                        data-aos-duration="2000">Sekretaris 1</a>
+                    <button class="btn btn-primary col-5" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#sekre2" aria-expanded="false" aria-controls="sekre2" data-aos="zoom-out"
+                        data-aos-duration="2000">Sekretaris 2</button>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="sekre1">
+                                <div class="container text-black text-center">
+                                    <img src="{{sekre1.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block"
+                                        alt="..." style="width: 40%; height: auto">
+                                    <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="namaLengkap">
+                                        {{sekre1.namaLengkap}}</h4>
+                                    <p id="nomor_anggota">{{sekre1.id_anggota}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="sekre2">
+                                <div class="container text-black text-center">
+                                    <img src="{{sekre2.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block"
+                                        alt="..." style="width: 40%; height: auto">
+                                    <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">
+                                        {{sekre2.namaLengkap}}</h4>
+                                    <p id="nomor_anggota">{{sekre2.id_anggota}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bendahara -->
+                <div class="row justify-content-center mt-2">
+                    <button class="btn btn-primary col-5" style="margin-right: 1em;" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#bendahara" aria-expanded="false"
+                        aria-controls="bendahara" data-aos="zoom-out" data-aos-duration="1500">
+                        Bendahara
+                    </button>
+                    <div class="mb-2 mt-2" style="height: auto;">
+                        <div class="collapse collapse-horizontal" id="bendahara">
+                            <div class="container text-black text-center">
+                                <img src="{{bendahara.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block"
+                                    alt="..." style="width: 15%; height: auto">
+                                <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{bendahara.namaLengkap}}
+                                </h4>
+                                <p id="nomor_anggota">{{bendahara.id_anggota}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Divisi -->
+                <div class="row justify-content-center text-black">
+                    <p class="d-inline-flex gap-1 col-3">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#dsapras" aria-expanded="false" aria-controls="dsapras"
+                            style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
+                            data-aos="zoom-out" data-aos-duration="1750">
+                            Divisi Sarana Prasarana
+                        </button>
+                    </p>
+                    <p class="d-inline-flex gap-1 col-3">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#dab"
+                            aria-expanded="false" aria-controls="dab"
+                            style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
+                            data-aos="zoom-out" data-aos-duration="1750">
+                            Divisi Alam Bebas
+                        </button>
+                    </p>
+                    <p class="d-inline-flex gap-1 col-3">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#dhid"
+                            aria-expanded="false" aria-controls="dhid"
+                            style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
+                            data-aos="zoom-out" data-aos-duration="1750">
+                            Divisi HID
+                        </button>
+                    </p>
+                    <p class="d-inline-flex gap-1 col-3">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#dlitbang" aria-expanded="false" aria-controls="dlitbang"
+                            style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
+                            data-aos="zoom-out" data-aos-duration="1750">
+                            Divisi Litbang
+                        </button>
+                    </p>
+                    <!-- Sapras -->
+                    <div class="collapse col-8 text-center" id="dsapras">
+                        <h4 style="text-align: left; font-weight: bold;">Divisi Sarana & Prasarana</h4>
+                        <img src="{{koor_sapras.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                            style="width: 15vw; height: auto">
+                        <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_sapras.namaLengkap}}</h4>
+                        <p id="nomor_anggota">{{koor_sapras.id_anggota}}</p>
+                        <!-- Anggota -->
+                        <div class="row" id="anggota">
+                            {%for anggota in data %}
+                            {%if anggota['status'] == "Divisi Sarana Prasarana"%}
+                            <div class="col text-center">
+                                <img src="{{ anggota.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block"
+                                    alt="..." style="width: 10vw; height: auto">
+                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">
+                                    {{anggota.namaLengkap}}</h4>
+                                <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- Alam Bebas -->
+                    <div class="collapse col-8 text-center" id="dab">
+                        <h4 style="text-align: left; font-weight: bold;">Divisi Alam Bebas</h4>
+                        <img src="{{ koor_albas.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                            style="width: 15vw; height: auto">
+                        <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_albas.namaLengkap}}</h4>
+                        <p id="nomor_anggota">{{koor_albas.id_anggota}}</p>
+                        <!-- Anggota -->
+
+                        <div class="row" id="anggota">
+                            {%for anggota in data %}
+                            {%if anggota['status'] == "Divisi Alam Bebas"%}
+                            <div class="col text-center">
+                                <img src="{{ anggota.gambar }}"
+                                    id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                                    style="width: 10vw; height: auto">
+                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
+                                </h4>
+                                <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- HID -->
+                    <div class="collapse col-8 text-center" id="dhid">
+                        <h4 style="text-align: left; font-weight: bold;">Divisi Humas Informasi Dokumentasi</h4>
+                        <img src="{{ koor_hid.gambar }}"
+                            id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                            style="width: 15vw; height: auto">
+                        <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_hid.namaLengkap}}</h4>
+                        <p id="nomor_anggota">{{koor_hid.id_anggota}}</p>
+                        <!-- Anggota -->
+                        <div class="row" id="anggota">
+                            {%for anggota in data %}
+                            {%if anggota['status'] == "Divisi HID"%}
+                            <div class="col text-center">
+                                <img src="{{ anggota.gambar }}"
+                                    id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                                    style="width: 15vw; height: auto">
+                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
+                                </h4>
+                                <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- Litbang -->
+                    <div class="collapse col-8 text-center" id="dlitbang">
+                        <h4 style="text-align: left; font-weight: bold;">Divisi Penelitian dan Pengembangan</h4>
+                        <img src="{{ koor_litbang.gambar }}"
+                            id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                            style="width: 15vw; height: auto">
+                        <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_litbang.namaLengkap}}</h4>
+                        <p id="nomor_anggota">{{koor_litbang.id_anggota}}</p>
+                        <!-- Anggota -->
+                        <div class="row" id="anggota">
+                            {%for anggota in data %}
+                            {%if anggota['status'] == "Divisi Litbang"%}
+                            <div class="col text-center">
+                                <img src="{{ anggota.gambar }}"
+                                    id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                                    style="width: 15vw; height: auto">
+                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
+                                </h4>
+                                <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src=" {{ url_for('static', filename='/layout/js/scripts.js') }}"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

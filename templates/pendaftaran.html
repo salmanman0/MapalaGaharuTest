@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='/img/Logo.png') }}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+  <title>Mapala Gaharu - Pendaftar</title>
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 ms-2 me-lg-0" id="sidebarToggle" href="#!"><i
+        class="fas fa-bars"></i></button>
+
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-0 me-3 me-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li><a class="dropdown-item" href="{{ url_for('login') }}">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <a class="nav-link" href="{{ url_for('dashboard') }}">
+              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+              Dashboard
+            </a>
+            <div class="sb-sidenav-menu-heading">CRUD</div>
+            <a class="nav-link" href="{{ url_for('admin') }}">
+              <div class="sb-nav-link-icon"><i class="bi bi-person"></i></div>
+              Admin
+            </a>
+
+            <a class="nav-link" href="{{ url_for('berita') }}">
+              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+              Berita
+            </a>
+            <a class="nav-link" href="{{ url_for('ongoing') }}">
+              <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
+              OnGoing
+            </a>
+            <a class="nav-link" href="{{ url_for('event') }}">
+              <div class="sb-nav-link-icon"><i class="bi bi-calendar2-event-fill"></i></div>
+              Event Tahunan
+            </a>
+            <a class="nav-link" href="{{ url_for('pendaftar') }}">
+              <div class="sb-nav-link-icon"><i class="bi bi-bookmark"></i></div>
+              Pendaftar
+            </a>
+          </div>
+        </div>
+        <div class="sb-sidenav-footer">
+          <div class="small">Logged in as:</div>
+          {{user.namaLengkap}}
+        </div>
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid px-4">
+          <h1 class="mt-4">Halaman Pendaftar</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Halaman Pendaftar</li>
+          </ol>
+
+          <div class="card mb-4">
+            <div class="card-header">
+              <i class="fa-solid fa-list-ul"></i>
+              Daftar Pendaftar
+            </div>
+            <div class="card-body">
+              <table id="datatablesSimple">
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Nama</th>
+                    <th>NIIM</th>
+                    <th>Kelas</th>
+                    <th>Program Studi</th>
+                    <th>Pengalaman Organisasi</th>
+                    <th>Tujuan Masuk</th>
+                    <th>Tahun Daftar</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Email</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Nama</th>
+                    <th>NIIM</th>
+                    <th>Kelas</th>
+                    <th>Program Studi</th>
+                    <th>Pengalaman Organisasi</th>
+                    <th>Tujuan Masuk</th>
+                    <th>Tahun Daftar</th>
+                    <th>Aksi</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  {% for data in data %}
+                  <tr>
+                    <td>{{ data['email'] }}</td>
+                    <td>{{ data['jenisKelamin'] }}</td>
+                    <td>{{ data['nama'] }}</td>
+                    <td>{{ data['nim'] }}</td>
+                    <td>{{ data['kelas'] }}</td>
+                    <td>{{ data['programStudi'] }}</td>
+                    <td>{{ data['pengalamanOrganisasi'] }}</td>
+                    <td>{{ data['tujuanMasuk'] }}</td>
+                    <td>{{ data['tanggalDaftar'] }}</td>
+                    <td>
+                      <!-- Modal -->
+                      <a href="" class="btn btn-outline-warning mb-2 mr-2"
+                        data-toggle="modal" data-target="#modaledit{{ data['_id'] }}">Edit</a>
+                      <a href="/delete-pendaftaran/{{data['_id']}}" class="btn btn-outline-danger btn-xs"
+                        onclick="return confirm('Apakah anda yakin ingin menghapusnya?')">Hapus</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Mapala Gaharu 2024</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal Edit -->
+  {% for data in data %}
+  <div class="modal fade" id="modaledit{{ data['_id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Pendaftar
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ url_for('update_pendaftaran') }}" method="POST" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="nama" class="col-form-label">Nama :</label>
+              <input type="hidden" name="id" value="{{ data['_id'] }}">
+              <input type="text" class="form-control" name="nama" value="{{ data['nama'] }}">
+            </div>
+            <div class="form-group">
+              <label for="jenisKelamin" class="col-form-label">Jenis Kelamin :</label>
+              <input type="text" class="form-control" name="jenisKelamin" value="{{ data['jenisKelamin'] }}">
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email :</label>
+              <input type="text" class="form-control" name="email" value="{{ data['email'] }}">
+            </div>
+            <div class="form-group">
+              <label for="nim" class="col-form-label">NIM :</label>
+              <input type="text" class="form-control" name="nim" value="{{ data['nim'] }}">
+            </div>
+            <div class="form-group">
+              <label for="kelas" class="col-form-label">Kelas :</label>
+              <input type="text" class="form-control" name="kelas" value="{{ data['kelas'] }}">
+            </div>
+            <div class="form-group">
+              <label for="programStudi" class="col-form-label">Program Studi :</label>
+              <input type="text" class="form-control" name="programStudi" value="{{ data['programStudi'] }}">
+            </div>
+            <div class="form-group">
+              <label for="pengalamanOrganisasi" class="col-form-label">Pengalaman Organisasi :</label>
+              <textarea class="form-control" name="pengalamanOrganisasi" rows="8"
+                value="{{ data['pengalamanOrganisasi'] }}">{{ data['pengalamanOrganisasi'] }}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="tujuanMasuk" class="col-form-label">Tujuan Masuk :</label>
+              <textarea class="form-control" name="tujuanMasuk" rows="8"
+                value="{{ data['tujuanMasuk'] }}">{{ data['tujuanMasuk'] }}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="tanggal" class="col-form-label">Tanggal :</label>
+              <input type="text" class="form-control" name="tanggal" value="{{ data['tanggalDaftar'] }}" disabled>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+  </script>
+  <script src="{{ url_for('static', filename='/js/scripts.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='/js/datatables-simple-demo.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+  </script>
+  <script>
+    $(document).ready(function () {
+      var url = window.location.href;
+      var urlObj = new URL(url);
+      var status = urlObj.searchParams.get('status');
+      if (status == "success"){
+        toastr.success('Berhasil. Luar biasa!');
+      }
+      else if(status == "danger") {
+        toastr.danger('Gagal. Silahkan Coba lagi!');
+      }
+      urlObj.searchParams.delete('status');
+      var newUrl = urlObj.toString();
+      history.replaceState(null, '', newUrl);
+    });
+  </script>
+</body>
+
+</html>

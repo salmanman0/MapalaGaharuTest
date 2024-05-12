@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Mapala Gaharu - Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='/img/Logo.png') }}" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="{{ url_for('static', filename='/vendor/bootstrap/css/bootstrap.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="{{ url_for('static', filename='/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}">
+	<!--===============================================================================================-->
+
+</head>
+<body>
+	<div class="limiter">
+			<div class="container-login100">
+					<div class="wrap-login100 p-t-30 p-b-50">
+							<span class="login100-form-title p-b-41">
+									Gaharu Admin Login
+							</span>
+							<form id="login_form" class="login100-form validate-form p-b-33 p-t-5" action="/sign_in" method="post">
+									<div class="wrap-input100 validate-input" data-validate="Enter username">
+											<input class="input100" type="text" name="username" id="username" placeholder="Username">
+											<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+									</div>
+
+									<div class="wrap-input100 validate-input" data-validate="Enter password">
+											<input class="input100" type="password" name="password" id="password" placeholder="Password">
+											<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+									</div>
+							</form>
+					</div>
+			</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+
+	<!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!--===============================================================================================-->
+	<script>
+			// Fungsi untuk menangani submit form ketika tombol Enter ditekan
+			$(document).ready(function() {
+					$('#username, #password').keypress(function(event) {
+							if (event.keyCode === 13) {
+									event.preventDefault(); // Mencegah form dari submit secara default
+									$('#login_form').submit(); // Melakukan submit form
+							}
+					});
+			});
+	</script>
+</body>
+
+
+</html>
