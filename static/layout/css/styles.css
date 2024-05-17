@@ -455,7 +455,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;
+  -webkit-appearnce: button;
 }
 
 button:not(:disabled),
@@ -13352,4 +13352,41 @@ body {
 
 .featurette-divider {
   margin: 3rem 0;
+}
+
+@media (min-width: 577px) {
+  .anggota-divisi {
+    width: 12vw;
+    height: 35vh;
+  }
+
+  .sekretaris {
+    width: 40%;
+    height: 35vh;
+  }
+
+  .kegiatan_tahunan {
+    width: 20vw;
+    height: 40%;
+    padding: 8rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .anggota-divisi {
+    width: 15vw;
+    height: 15vh;
+  }
+
+  .sekretaris {
+    width: 40%;
+    height: 15vh;
+  }
+
+  .kegiatan_tahunan {
+    width: 60vw;
+    height: 40%;
+    padding: 8rem 0;
+    margin-bottom: 5vh;
+  }
 }

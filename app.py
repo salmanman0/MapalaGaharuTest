@@ -43,7 +43,14 @@ except Exception as e:
 ################################################################################
 
 ################################### FUNCTION ###################################
-
+def check_date_format(date_string, date_format='%Y-%m-%d'):
+    try:
+        # Attempt to parse the date_string with the given date_format
+        parsed_date = datetime.datetime.strptime(date_string, date_format)
+        return True
+    except ValueError:
+        # If parsing fails, the date_string does not match the date_format
+        return False
 
 def format_tanggal(tanggal):
     tanggal_objek = datetime.datetime.strptime(tanggal, "%Y-%m-%d")
@@ -174,12 +181,25 @@ def login():
     return render_template("login.html")
 
 
+@app.route('/anggota')
+def halamanAnggota():
+    status = list(db.status.find({}, {"_id": 0}))
+    anggota = list(db.anggota.find({}, {"_id": 0}))
+    return render_template("L_anggota.html", status=status[0], anggota = anggota)
+
+
 @app.route('/pendaftaran')
 def pendaftaran():
     if kondisi_terpenuhi():
         return render_template("L_pendaftaran.html")
     else:
         return render_template("404.html")
+
+
+@app.route('/contact')
+def halamanContact():
+    status = list(db.status.find({}, {"_id": 0}))
+    return render_template("L_contact.html", status=status[0])
 
 
 @app.route('/ongoing', methods=["GET"])
@@ -239,9 +259,9 @@ def dashboard():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=["HS256"])
         user_info = db.admin.find_one({"username": payload.get("id")})
-        total_alumni = db.anggota.count_documents({'status': 'Alumni'})
+        total_anggota_luar_biasa = db.anggota.count_documents({'status': 'Anggota Luar Biasa'})
         total_anggota = db.anggota.estimated_document_count()
-        total_admin = db.admin.estimated_document_count()
+        total_pengurus = total_anggota - total_anggota_luar_biasa
         dashboard_data = list(db.anggota.find())
         ketua_umum_data = db.anggota.find_one({"status": "Ketua Umum"})
         status = list(db.status.find())
@@ -252,8 +272,8 @@ def dashboard():
         return render_template('index.html',
                                data=dashboard_data,
                                anggota=total_anggota,
-                               admin=total_admin,
-                               alumni=total_alumni,
+                               pengurus = total_pengurus,
+                               anggota_luar_biasa=total_anggota_luar_biasa,
                                ketua=ketua_umum_data,
                                user=user_info, status=status)
     except jwt.ExpiredSignatureError:
@@ -328,7 +348,7 @@ def update_anggota():
     tanggal = request.form['tanggal']
     gambar_anggota = request.files.get("gambar")
     gambar = None
-    if gambar_anggota is not None and gambar_anggota.filename != '' and gambar_anggota.content_length > 0:
+    if gambar_anggota is not None and gambar_anggota.filename != '':
         filename = secure_filename(gambar_anggota.filename)
         gambar = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         gambar_anggota.save(gambar)
@@ -348,6 +368,7 @@ def update_anggota():
         "tanggal": tanggal,
         "gambar": gambar
     }
+    print(gambar)
     try:
         db.anggota.update_one(
             {"_id": object_id},  # Kriteria dokumen yang akan diupdate
@@ -767,12 +788,14 @@ def admin():
 @app.route('/admin/create', methods=["POST"])
 def create_admin():
     try:
+        password=request.form["password"],
+        password_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
         admin = {
             "namaLengkap": request.form["namaLengkap"],
             "username": request.form["username"],
             "tanggalBertugas": request.form["tanggalBertugas"],
             "email": request.form["email"],
-            "password": request.form["password"],
+            "password": password_hash
         }
         db.admin.insert_one(admin)
         return redirect(url_for('admin', status='success'))
@@ -789,6 +812,7 @@ def update_admin():
     email = request.form['email']
     username = request.form['username']
     password = request.form['password']
+    password_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
     tanggalBertugas = request.form['tanggalBertugas']
 
     try:
@@ -803,7 +827,7 @@ def update_admin():
                     "namaLengkap": namaLengkap,
                     "email": email,
                     "username": username,
-                    "password": password,
+                    "password": password_hash,
                     "tanggalBertugas": tanggalBertugas
                 }
              }  # Update field

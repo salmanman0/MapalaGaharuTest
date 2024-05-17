@@ -106,7 +106,7 @@
                                         <th>Judul</th>
                                         <th>Tanggal</th>
                                         <th>Deskripsi</th>
-                                        <th>Konten</th>
+                                        <!-- <th>Konten</th> -->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -116,7 +116,7 @@
                                         <th>Judul</th>
                                         <th>Tanggal</th>
                                         <th>Deskripsi</th>
-                                        <th>Konten</th>
+                                        <!-- <th>Konten</th> -->
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
@@ -128,7 +128,7 @@
                                         <td>{{ data['judul'] }}</td>
                                         <td>{{ data['tanggal'] }}</td>
                                         <td>{{ data['deskripsi'] }}</td>
-                                        <td>{{ data['konten'] }}</td>
+                                        <!-- <td>{{ data['konten'] }}</td> -->
                                         <td>
                                             <!-- Modal -->
                                             <a href="/event/update/{{ data['_id'] }}" class="btn btn-outline-warning mb-2 mr-2"
@@ -193,11 +193,11 @@
                             <input type="file" class="form-control" required name="gambar"
                                 placeholder="Tambahkan Gambar Event">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="konten" class="col-form-label">Konten :</label>
                             <textarea class="form-control" name="konten" rows="8"
                                 placeholder="Masukkan konten di sini"></textarea>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -243,11 +243,11 @@
                             <img src="/{{ data.gambar }}" style="width:150px" class="img-thumbnail"
                                 alt="Gambar Event">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="konten" class="col-form-label">Konten :</label>
                             <textarea class="form-control" name="konten" rows="8"
                             value="{{ data['konten'] }}">{{ data['konten'] }}</textarea>
-                        </div>
+                        </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

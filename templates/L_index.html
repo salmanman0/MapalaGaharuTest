@@ -4,13 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Mapala Gaharu - Beranda</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/layout/assets/img/logo.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/img/logo.png') }}" />
     <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -20,9 +21,9 @@
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ url_for('static', filename='/layout/css/styles.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='/layout/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/layout/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css ">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/layout/css/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='/layout/css/owl.theme.default.min.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css "/>
     <script>
         window.addEventListener('message', function (event) {
             if (event.data && event.data.type === 'checkboxChange') {
@@ -44,8 +45,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="width: 100vw !important;"
         data-aos="fade-down" data-aos-duration="1000">
         <div class="container px-4 px-lg-5" style="width: 100vw !important;">
-            <a href="#page-top"><img src="{{ url_for('static', filename='/layout/assets/img/logo.png') }}" alt=""
-                    width="50" height="45" srcset=""></a>
+            <a href="#page-top"><img src="{{ url_for('static', filename='/img/logo.png') }}" alt="" width="50"
+                    height="45" srcset=""></a>
             <a class="navbar-brand" href="#page-top">Mapala Gaharu</a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
@@ -61,7 +62,8 @@
                     <li class="nav-item"><a class="nav-link" href="#ongoing">Ongoing</a></li>
                     <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
                     <li class="nav-item d-{{status.stats}}"><a class="nav-link" href="#pendaftaran">Pendaftaran</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanAnggota') }}">Anggota</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanContact') }}">Contact</a></li>
                     </li>
                 </ul>
             </div>
@@ -78,17 +80,17 @@
                         bersama, menjaga alam sebagai kesadaran. Satu
                         tujuan, satu keluarga.</h2>
                     <div class="d-flex align-items-center justify-content-center">
-                        <div class="content mx-3" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="content mx-3" data-aos="fade-up" data-aos-duration="1500"  onclick="window.location.href='{{ url_for("halamanAnggota") }}'">
                             <i class="fas fa-user-group fa-2x" style="color: #d97706;"></i>
                             <h6 class="mt-2">Jumlah Anggota</h6>
                             <h6 class=""><b style="overflow: hidden; text-overflow: ellipsis;">{{anggota}}</b></h6>
                         </div>
-                        <div class="content mx-3" data-aos="fade-up" data-aos-duration="1750">
+                        <div class="content mx-3" data-aos="fade-up" data-aos-duration="1750"  onclick="window.location.href='{{ url_for("halamanTentang") }}'">
                             <i class="fas fa-clock-rotate-left fa-2x" style="color: #d97706;"></i>
                             <h6 class="mt-2">Berdiri Sejak</h6>
                             <h6 class=""><b style="overflow: hidden; text-overflow: ellipsis;">2001</b></h6>
                         </div>
-                        <div class="content mx-3" data-aos="fade-up" data-aos-duration="2000">
+                        <div class="content mx-3" data-aos="fade-up" data-aos-duration="2000" onclick="window.location.href='{{ url_for("halamanTentang") }}#kepengurusan'">
                             <i class="fas fa-crown fa-2x" style="color: #d97706;"></i>
                             <h6 class="mt-2">Ketua Umum</h6>
                             <h6 class=""><b
@@ -165,7 +167,6 @@
                     <i class="far fa-paper-plane fa-2x mb-2" style="color: #fff;"></i>
                     <h2 class="mb-5 px-4 py-2" style="color: #fff;">Come on join us!</h2>
                     <a class="btn btn-primary" href="{{ url_for('pendaftaran')}}">Daftarkan Diri</a>
-
                 </div>
             </div>
         </div>
@@ -193,7 +194,7 @@
                             <i class="fas fa-envelope mb-2 text-white-50"></i>
                             <h4 class="text-uppercase m-0 text-white-50">Email</h4>
                             <hr class="my-4 mx-auto" />
-                            <div class="small"><a class="text-white-50" href="#!">gaharu@pcr.ac.id</a></div>
+                            <div class="small"><a class="text-white-50" href="https://mail.google.com/mail/?view=cm&fs=1&to=gaharu@pcr.ac.id">mapala@bem.pcr.ac.id</a></div>
                         </div>
                     </div>
                 </div>
@@ -201,21 +202,13 @@
                     <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);"
                         data-aos="zoom-out-right" data-aos-duration="1750">
                         <div class="card-body text-center">
-                            <i class="fas fa-mobile-alt mb-2 text-white-50"></i>
-                            <h4 class="text-uppercase m-0 text-white-50">Phone</h4>
+                            <i class="fa-brands fa-instagram text-white-50"></i></i>
+                            <h4 class="text-uppercase m-0 text-white-50">Instagram</h4>
                             <hr class="my-4 mx-auto" />
-                            <div class="small text-white-50">+62 896-4916-4411</div>
+                            <div class="small"><a class="text-white-50" href="https://www.instagram.com/mapalagaharu/">@mapalagaharu</a></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="social d-flex justify-content-center">
-                <a class="mx-2" href="#!" data-aos="zoom-out-right" data-aos-duration="750"><i class="fab fa-twitter"
-                        style="color: #fff;"></i></a>
-                <a class="mx-2" href="#!" data-aos="zoom-out-right" data-aos-duration="1000"><i
-                        class="fab fa-facebook-f" style="color: #fff;"></i></a>
-                <a class="mx-2" href="#!" data-aos="zoom-out-right" data-aos-duration="1250"><i class="fab fa-github"
-                        style="color: #fff;"></i></a>
             </div>
         </div>
     </section>
@@ -225,7 +218,7 @@
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
+    Core theme JS
     <script src="{{ url_for('static', filename='/layout/js/scripts.js') }}"></script>
     <script src="{{ url_for('static', filename='/layout/js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='/layout/js/popper.js') }}"></script>

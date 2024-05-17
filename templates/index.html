@@ -164,14 +164,14 @@
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Jumlah Admin</div>
-                                <h4 class="card-body text-center">{{ admin }}</h4>
+                                <div class="card-body">Jumlah Pengurus</div>
+                                <h4 class="card-body text-center">{{ pengurus }}</h4>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-dark text-white mb-4">
-                                <div class="card-body">Jumlah Alumni</div>
-                                <h4 class="card-body text-center">{{ alumni }}</h4>
+                                <div class="card-body">Jumlah Anggota Luar Biasa</div>
+                                <h4 class="card-body text-center">{{ anggota_luar_biasa }}</h4>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
@@ -286,7 +286,7 @@
                             <label for="status" class="col-form-label">Status :</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="" selected>Pilih Opsi</option>
-                                <option value="Alumni">Alumni</option>
+                                <option value="Anggota Luar Biasa">Anggota Luar Biasa</option>
                                 <option value="Ketua Umum">Ketua Umum</option>
                                 <option value="Sekretaris 1">Sekretaris 1</option>
                                 <option value="Sekretaris 2">Sekretaris 2</option>
@@ -299,7 +299,7 @@
                                 <option value="Divisi HID">Divisi HID</option>
                                 <option value="Koordinator Divisi Litbang">Koordinator Divisi Litbang</option>
                                 <option value="Divisi Litbang">Divisi Litbang</option>
-                                <option value="Anggota Muda">Anggota Muda</option>
+
                             </select>
                         </div>
                         <div class="form-group">
@@ -357,7 +357,7 @@
                             <label for="status" class="col-form-label">Status :</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="{{ data['status'] }}" selected>{{ data['status'] }}</option>
-                                <option value="Alumni">Alumni</option>
+                                <option value="Anggota Luar Biasa">Anggota Luar Biasa</option>
                                 <option value="Ketua Umum">Ketua Umum</option>
                                 <option value="Sekretaris 1">Sekretaris 1</option>
                                 <option value="Sekretaris 2">Sekretaris 2</option>
@@ -370,7 +370,6 @@
                                 <option value="Divisi HID">Divisi HID</option>
                                 <option value="Koordinator Divisi Litbang">Koordinator Divisi Litbang</option>
                                 <option value="Divisi Litbang">Divisi Litbang</option>
-                                <option value="Anggota Muda">Anggota Muda</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -380,11 +379,11 @@
                         </div>
                         <div class="form-group">
                             <label for="tanggal" class="col-form-label">Tanggal Bergabung :</label>
-                            <input type="date" class="form-control" name="tanggal" value="{{ data['tanggal'] }}">
+                            <input type="date" class="form-control" name="tanggal" value="{{ data['tanggal'] }}" placeholder="{{ data['tanggal'] }}">
                         </div>
                         <div class="form-group">
                             <label for="gambar" class="col-form-label">Gambar Anggota :</label>
-                            <input type="file" class="form-control" name="gambar" placeholder="{{ data['gambar'] }}">
+                            <input type="file" class="form-control" name="gambar">
                             <img src="{{ data.gambar }}" style="width:150px" class="img-thumbnail" alt="Gambar Anggota">
                         </div>
                     </div>

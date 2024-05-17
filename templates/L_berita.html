@@ -44,7 +44,8 @@
 
           <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
           <li class="nav-item d-{{status.stats}}"><a class="nav-link" href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanAnggota') }}">Anggota</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{url_for('halamanContact')}}">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -141,46 +142,44 @@
   <!-- Contact-->
   <section class="contact-section bg-black" id="contact">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5">
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt mb-2 text-white-50"></i>
-              <h4 class="text-uppercase m-0 text-white-50">Lokasi</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small text-white-50">Jl. Umban Sari No.1, Umban Sari, Kec. Rumbai, Kota
-                Pekanbaru, Riau 28265</div>
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);"
+                    data-aos="zoom-out-left" data-aos-duration="750">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt mb-2 text-white-50"></i>
+                        <h4 class="text-uppercase m-0 text-white-50">Lokasi</h4>
+                        <hr class="my-4 mx-auto" />
+                        <div class="small text-white-50">Jl. Umban Sari No.1, Umban Sari, Kec. Rumbai, Kota
+                            Pekanbaru, Riau 28265</div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope mb-2 text-white-50"></i>
-              <h4 class="text-uppercase m-0 text-white-50">Email</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small"><a class="text-white-50" href="#!">gaharu@pcr.ac.id</a></div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);"
+                    data-aos="zoom-in-up" data-aos-duration="1250">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope mb-2 text-white-50"></i>
+                        <h4 class="text-uppercase m-0 text-white-50">Email</h4>
+                        <hr class="my-4 mx-auto" />
+                        <div class="small"><a class="text-white-50" href="https://mail.google.com/mail/?view=cm&fs=1&to=gaharu@pcr.ac.id">mapala@bem.pcr.ac.id</a></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);">
-            <div class="card-body text-center">
-              <i class="fas fa-mobile-alt mb-2 text-white-50"></i>
-              <h4 class="text-uppercase m-0 text-white-50">Phone</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small text-white-50">+62 896-4916-4411</div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100" style="background: linear-gradient(360deg, #000080 0%, #000 100%);"
+                    data-aos="zoom-out-right" data-aos-duration="1750">
+                    <div class="card-body text-center">
+                        <i class="fa-brands fa-instagram text-white-50"></i></i>
+                        <h4 class="text-uppercase m-0 text-white-50">Instagram</h4>
+                        <hr class="my-4 mx-auto" />
+                        <div class="small"><a class="text-white-50" href="https://www.instagram.com/mapalagaharu/">@mapalagaharu</a></div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="social d-flex justify-content-center">
-        <a class="mx-2" href="#!"><i class="fab fa-twitter" style="color: #fff;"></i></a>
-        <a class="mx-2" href="#!"><i class="fab fa-facebook-f" style="color: #fff;"></i></a>
-        <a class="mx-2" href="#!"><i class="fab fa-github" style="color: #fff;"></i></a>
-      </div>
     </div>
-  </section>
+</section>
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
     <div class="container px-4 px-lg-5">Copyright &copy; Mapala Gaharu | 2024</div>

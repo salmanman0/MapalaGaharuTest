@@ -50,8 +50,10 @@
                             href="{{ url_for('home') }}#ongoing">Ongoing</a></li>
                     <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1500"><a class="nav-link"
                             href="#berita">Berita</a></li>
-                    <li class="nav-item d-{{status.stats}}" data-aos="fade-down-left" data-aos-duration="1750"><a class="nav-link"
-                            href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
+                    <li class="nav-item d-{{status.stats}}" data-aos="fade-down-left" data-aos-duration="1750"><a
+                            class="nav-link" href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanAnggota') }}">Anggota</a></li>
+
                     <li class="nav-item" data-aos="fade-down-left" data-aos-duration="2000"><a class="nav-link"
                             href="#contact">Contact</a></li>
                 </ul>
@@ -155,7 +157,7 @@
 
 
             <!-- Kepengurusan -->
-            <section class="kepengurusan">
+            <section class="kepengurusan" id="kepengurusan">
                 <div class="header-kepengurusan">
                     <h1 class="text-main" style="font-weight: bold;" data-aos="zoom-in-right" data-aos-duration="1000">
                         Kepengurusan Aktif Mapala Gaharu</h1>
@@ -197,8 +199,8 @@
                         <div class="col">
                             <div class="collapse multi-collapse" id="sekre1">
                                 <div class="container text-black text-center">
-                                    <img src="{{sekre1.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block"
-                                        alt="..." style="width: 40%; height: auto">
+                                    <img src="{{sekre1.gambar}}" id="gambar_anggota"
+                                        class="rounded mx-auto d-block sekretaris" alt="...">
                                     <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="namaLengkap">
                                         {{sekre1.namaLengkap}}</h4>
                                     <p id="nomor_anggota">{{sekre1.id_anggota}}</p>
@@ -208,8 +210,8 @@
                         <div class="col">
                             <div class="collapse multi-collapse" id="sekre2">
                                 <div class="container text-black text-center">
-                                    <img src="{{sekre2.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block"
-                                        alt="..." style="width: 40%; height: auto">
+                                    <img src="{{sekre2.gambar}}" id="gambar_anggota"
+                                        class="rounded mx-auto d-block sekretaris" alt="...">
                                     <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">
                                         {{sekre2.namaLengkap}}</h4>
                                     <p id="nomor_anggota">{{sekre2.id_anggota}}</p>
@@ -283,8 +285,8 @@
                             {%for anggota in data %}
                             {%if anggota['status'] == "Divisi Sarana Prasarana"%}
                             <div class="col text-center">
-                                <img src="{{ anggota.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block"
-                                    alt="..." style="width: 10vw; height: auto">
+                                <img src="{{ anggota.gambar }}" id="gambar_anggota"
+                                    class="rounded mx-auto d-block anggota-divisi" alt="...">
                                 <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">
                                     {{anggota.namaLengkap}}</h4>
                                 <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
@@ -302,15 +304,14 @@
                         <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_albas.namaLengkap}}</h4>
                         <p id="nomor_anggota">{{koor_albas.id_anggota}}</p>
                         <!-- Anggota -->
-
                         <div class="row" id="anggota">
                             {%for anggota in data %}
                             {%if anggota['status'] == "Divisi Alam Bebas"%}
                             <div class="col text-center">
-                                <img src="{{ anggota.gambar }}"
-                                    id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
-                                    style="width: 10vw; height: auto">
-                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
+                                <img src="{{ anggota.gambar }}" id="gambar_anggota"
+                                    class="rounded mx-auto d-block anggota-divisi" alt="...">
+                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">
+                                    {{anggota.namaLengkap}}
                                 </h4>
                                 <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
                             </div>
@@ -322,8 +323,7 @@
                     <!-- HID -->
                     <div class="collapse col-8 text-center" id="dhid">
                         <h4 style="text-align: left; font-weight: bold;">Divisi Humas Informasi Dokumentasi</h4>
-                        <img src="{{ koor_hid.gambar }}"
-                            id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
+                        <img src="{{ koor_hid.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
                             style="width: 15vw; height: auto">
                         <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_hid.namaLengkap}}</h4>
                         <p id="nomor_anggota">{{koor_hid.id_anggota}}</p>
@@ -332,10 +332,9 @@
                             {%for anggota in data %}
                             {%if anggota['status'] == "Divisi HID"%}
                             <div class="col text-center">
-                                <img src="{{ anggota.gambar }}"
-                                    id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
-                                    style="width: 15vw; height: auto">
-                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
+                                <img src="{{ anggota.gambar }}" id="gambar_anggota"
+                                    class="rounded mx-auto d-block anggota-divisi" alt="..." <h4 class="mt-3 ganda-font"
+                                    style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
                                 </h4>
                                 <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
                             </div>
@@ -347,9 +346,8 @@
                     <!-- Litbang -->
                     <div class="collapse col-8 text-center" id="dlitbang">
                         <h4 style="text-align: left; font-weight: bold;">Divisi Penelitian dan Pengembangan</h4>
-                        <img src="{{ koor_litbang.gambar }}"
-                            id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
-                            style="width: 15vw; height: auto">
+                        <img src="{{ koor_litbang.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block"
+                            alt="..." style="width: 15vw; height: auto">
                         <h4 class="mt-3" style="font-weight: bold;" id="nama_anggota">{{koor_litbang.namaLengkap}}</h4>
                         <p id="nomor_anggota">{{koor_litbang.id_anggota}}</p>
                         <!-- Anggota -->
@@ -357,10 +355,10 @@
                             {%for anggota in data %}
                             {%if anggota['status'] == "Divisi Litbang"%}
                             <div class="col text-center">
-                                <img src="{{ anggota.gambar }}"
-                                    id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
-                                    style="width: 15vw; height: auto">
-                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">{{anggota.namaLengkap}}
+                                <img src="{{ anggota.gambar }}" id="gambar_anggota"
+                                    class="rounded mx-auto d-block anggota-divisi" alt="...">
+                                <h4 class="mt-3 ganda-font" style="font-weight: bold;" id="nama_anggota">
+                                    {{anggota.namaLengkap}}
                                 </h4>
                                 <p class="ganda-font" id="nomor_anggota">{{anggota.id_anggota}}</p>
                             </div>
