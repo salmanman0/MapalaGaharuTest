@@ -11,6 +11,16 @@
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/layout/assets/img/logo.png') }}" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .mycards {
+      margin: 20px auto 0px auto;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .mycomment {
+      color: gray;
+  }
+  </style>
 </head>
 
 <body>
@@ -31,12 +41,13 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#beranda">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanTentang') }}">Tentang</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#ongoing">Ongoing</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanOngoing') }}">Ongoing</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#berita">Berita</a></li>
-          <li class="nav-item d-{{status.stats}}"><a class="nav-link" href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
+          <li class="nav-item d-{{status.stats}}"><a class="nav-link"
+              href="{{ url_for('home') }}#pendaftaran">Pendaftaran</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Anggota</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanContact') }}">Contact</a></li>
-        </li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanContact') }}">Kontak</a></li>
+          </li>
         </ul>
       </div>
     </div>
@@ -62,32 +73,33 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#flush-collapse{{ angkatan }}" aria-expanded="false" aria-controls="flush-collapseOne">
+          data-bs-target="#flush-collapse{{ angkatan }}" aria-expanded="false" aria-controls="flush-collapse{{ angkatan }}">
           {{ angkatan }}
         </button>
       </h2>
       <div id="flush-collapse{{ angkatan }}" class="accordion-collapse collapse"
         data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
-          <div class="row align-items-start">
-            {% for data in anggota %}
-            {% set y = data.id_anggota.split('-') %}
-            {% set id = y[1] %}
-            {% if id == angkatan %}
-            <div class="col-6 col-sm-3 mb-3">
-              <div class="card" style="width: 18rem;">
-                <img src="{{data.gambar}}" class="card-img-top" alt="..." style="height: 50vh">
-                <div class="card-body">
-                  <h4>{{data.namaLengkap}}</h4>
-                  <p>{{data.id_anggota}}</p>
-                  <p class="card-text">{{data.status}}</p>
+          <div class="mycards">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+              {% for data in anggota %}
+              {% set y = data.id_anggota.split('-') %}
+              {% set id = y[1] %}
+              {% if id == angkatan %}
+              <div class="col">
+                <div class="card h-70">
+                  <img src="{{data.gambar}}" class="card-img-top" style="height: 50vh;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{data.namaLengkap}}</h5>
+                    <p class="card-text">{{data.id_anggota}}</p>
+                    <p class="mycomment">{{data.status}}</p>
+                  </div>
                 </div>
               </div>
+              {%endif%}
+              {% endfor %}
             </div>
-            {%endif%}
-            {% endfor %}
           </div>
-
         </div>
       </div>
     </div>

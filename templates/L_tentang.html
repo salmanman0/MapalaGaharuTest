@@ -23,7 +23,23 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ url_for('static', filename='/layout/css/styles.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href=" {{ url_for('static', filename='/layout/css/tentang.css') }}">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.divisi-button').on('click', function() {
+                var target = $(this).data('bs-target');
+        
+                // Tutup semua elemen collapse divisi
+                $('.divisi-content').not(target).collapse('hide');
+            });
+        
+            // Optionally, toggle the target collapse (this part is automatically handled by Bootstrap if using data-bs-toggle)
+            $('.divisi-button').on('click', function() {
+                var target = $(this).data('bs-target');
+                $(target).collapse('toggle');
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -46,8 +62,7 @@
                             href="{{ url_for('home') }}#beranda">Beranda</a></li>
                     <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1000"><a class="nav-link"
                             href="#">Tentang</a></li>
-                    <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1250"><a class="nav-link"
-                            href="{{ url_for('home') }}#ongoing">Ongoing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanOngoing') }}">Ongoing</a></li>
                     <li class="nav-item" data-aos="fade-down-left" data-aos-duration="1500"><a class="nav-link"
                             href="#berita">Berita</a></li>
                     <li class="nav-item d-{{status.stats}}" data-aos="fade-down-left" data-aos-duration="1750"><a
@@ -55,7 +70,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('halamanAnggota') }}">Anggota</a></li>
 
                     <li class="nav-item" data-aos="fade-down-left" data-aos-duration="2000"><a class="nav-link"
-                            href="#contact">Contact</a></li>
+                            href="#contact">Kontak</a></li>
                 </ul>
             </div>
         </div>
@@ -242,7 +257,7 @@
                 <!-- Divisi -->
                 <div class="row justify-content-center text-black">
                     <p class="d-inline-flex gap-1 col-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary divisi-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#dsapras" aria-expanded="false" aria-controls="dsapras"
                             style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
                             data-aos="zoom-out" data-aos-duration="1750">
@@ -250,7 +265,7 @@
                         </button>
                     </p>
                     <p class="d-inline-flex gap-1 col-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#dab"
+                        <button class="btn btn-primary divisi-button" type="button" data-bs-toggle="collapse" data-bs-target="#dab"
                             aria-expanded="false" aria-controls="dab"
                             style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
                             data-aos="zoom-out" data-aos-duration="1750">
@@ -258,7 +273,7 @@
                         </button>
                     </p>
                     <p class="d-inline-flex gap-1 col-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#dhid"
+                        <button class="btn btn-primary divisi-button" type="button" data-bs-toggle="collapse" data-bs-target="#dhid"
                             aria-expanded="false" aria-controls="dhid"
                             style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
                             data-aos="zoom-out" data-aos-duration="1750">
@@ -266,7 +281,7 @@
                         </button>
                     </p>
                     <p class="d-inline-flex gap-1 col-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary divisi-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#dlitbang" aria-expanded="false" aria-controls="dlitbang"
                             style="min-width: 15vw; max-width: 17vw; overflow: hidden;text-overflow: ellipsis"
                             data-aos="zoom-out" data-aos-duration="1750">
@@ -274,7 +289,7 @@
                         </button>
                     </p>
                     <!-- Sapras -->
-                    <div class="collapse col-8 text-center" id="dsapras">
+                    <div class="collapse divisi-content col-8 text-center" id="dsapras">
                         <h4 style="text-align: left; font-weight: bold;">Divisi Sarana & Prasarana</h4>
                         <img src="{{koor_sapras.gambar}}" id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
                             style="width: 15vw; height: auto">
@@ -297,7 +312,7 @@
                         <hr>
                     </div>
                     <!-- Alam Bebas -->
-                    <div class="collapse col-8 text-center" id="dab">
+                    <div class="collapse divisi-content col-8 text-center" id="dab">
                         <h4 style="text-align: left; font-weight: bold;">Divisi Alam Bebas</h4>
                         <img src="{{ koor_albas.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
                             style="width: 15vw; height: auto">
@@ -321,7 +336,7 @@
                         <hr>
                     </div>
                     <!-- HID -->
-                    <div class="collapse col-8 text-center" id="dhid">
+                    <div class="collapse divisi-content col-8 text-center" id="dhid">
                         <h4 style="text-align: left; font-weight: bold;">Divisi Humas Informasi Dokumentasi</h4>
                         <img src="{{ koor_hid.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block" alt="..."
                             style="width: 15vw; height: auto">
@@ -344,7 +359,7 @@
                         <hr>
                     </div>
                     <!-- Litbang -->
-                    <div class="collapse col-8 text-center" id="dlitbang">
+                    <div class="collapse divisi-content col-8 text-center" id="dlitbang">
                         <h4 style="text-align: left; font-weight: bold;">Divisi Penelitian dan Pengembangan</h4>
                         <img src="{{ koor_litbang.gambar }}" id="gambar_anggota" class="rounded mx-auto d-block"
                             alt="..." style="width: 15vw; height: auto">
@@ -368,6 +383,7 @@
                         <hr>
                     </div>
                 </div>
+                
             </section>
         </div>
     </section>
